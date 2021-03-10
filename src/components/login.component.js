@@ -1,64 +1,73 @@
- const React = require("react");
- const  Component  = require("react").Component;
- const LoginDataService = require("../services/login.service")
+const React = require("react");
+const Component = require("react").Component;
+const LoginDataService = require("../services/login.service")
 
- const Row = require('react-materialize').Row;
-const Col = require('react-materialize').Col; 
+const Card = require("react-materialize").Card
+const TextInput = require("react-materialize").TextInput;
 
-export default class Login extends Component 
-{
-    constructor(props)
-    {
+export default class Login extends Component {
+    constructor(props) {
         super(props);
 
         this.onChangeLogin.bind(this);
         this.onChangePass.bind(this);
 
-        
+
         this.newLogin.bind(this);
 
         //JSON vazio
-        this.state = 
+        this.state =
         {
-            login:"",
-            pass:""
+            login: "",
+            pass: ""
         };
     }
-    onChangeLogin(e)
-    {
+    onChangeLogin(e) {
         this.setState
-        (
-            {
-                login:e.target.value
-            }
-        );
+            (
+                {
+                    login: e.target.value
+                }
+            );
     }
-    onChangePass(e)
-    {
-        
+    onChangePass(e) {
+
         this.setState
-        (
-            {
-                pass:e.target.value
-            }
-        )
+            (
+                {
+                    pass: e.target.value
+                }
+            )
     }
-    newLogin()
-    {
+    newLogin() {
         var data = {
-            login:this.state.login,
-            pass:this.state.pass
+            login: this.state.login,
+            pass: this.state.pass
         }
         LoginDataService.login(data).then(response => {
 
             console.log(response);
         }
 
-        ).catch(
+        ).catch(err => {console.log(err)}
 
         );
 
 
 
+    }
+    render() {
+       const card_login = <Card>
+            <TextInput
+                id="TextInput-1"
+                label="Login"
+            />
+            <TextInput
+                id="TextInput-1"
+                label="Senha"
+                password
+            />
+        </Card>
+        return card_login
     }
 }
