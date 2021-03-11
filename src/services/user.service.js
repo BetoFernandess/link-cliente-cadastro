@@ -1,4 +1,4 @@
- const http = require("../http/http-common");
+ const http = require("../http/http-commons");
 
  class UserDataService
  {

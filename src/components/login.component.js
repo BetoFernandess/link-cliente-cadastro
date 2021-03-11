@@ -2,6 +2,10 @@ const React = require("react");
 const Component = require("react").Component;
 const LoginDataService = require("../services/login.service")
 
+const Route = require("react-router-dom").Route;
+const Switch = require("react-router-dom").Switch;
+
+
 const Card = require("react-materialize").Card
 const TextInput = require("react-materialize").TextInput;
 
