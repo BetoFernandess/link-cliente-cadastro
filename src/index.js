@@ -9,16 +9,14 @@ const serviceWorker = require("./serviceWorker");
 const BrowserRouter = require("react-router-dom").BrowserRouter;
 
 const Row = require("react-materialize").Row;
-const Col = require("react-materialize").Col;
 
 ReactDOM.render(
   <Row>
-    <Col s={6} offset-s = {3} >
+    
     <BrowserRouter>
       <App />
       
     </BrowserRouter>
-    </Col>
     
   </Row> 
   

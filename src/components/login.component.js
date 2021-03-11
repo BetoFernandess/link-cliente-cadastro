@@ -2,22 +2,22 @@ const React = require("react");
 const Component = require("react").Component;
 const LoginDataService = require("../services/login.service")
 
-const Route = require("react-router-dom").Route;
-const Switch = require("react-router-dom").Switch;
+const M = require("materialize-css");
 
 
-const Card = require("react-materialize").Card
+const Col = require("react-materialize").Col
 const TextInput = require("react-materialize").TextInput;
 
 export default class Login extends Component {
+    
     constructor(props) {
         super(props);
 
-        this.onChangeLogin.bind(this);
-        this.onChangePass.bind(this);
+        this.onChangeLogin = this.onChangeLogin.bind(this);
+        this.onChangePass = this.onChangePass.bind(this);
 
 
-        this.newLogin.bind(this);
+        this.newLogin = this.newLogin.bind(this);
 
         //JSON vazio
         this.state =
@@ -33,6 +33,7 @@ export default class Login extends Component {
                     login: e.target.value
                 }
             );
+       
     }
     onChangePass(e) {
 
@@ -42,6 +43,7 @@ export default class Login extends Component {
                     pass: e.target.value
                 }
             )
+           
     }
     newLogin() {
         var data = {
@@ -60,18 +62,26 @@ export default class Login extends Component {
 
 
     }
+    componentDidMount() {
+        // Auto initialize all the things!
+        M.AutoInit();
+    }
     render() {
-       const card_login = <Card>
+       const card_login = <Col >
             <TextInput
                 id="TextInput-1"
                 label="Login"
+                value={this.state.login}
+                onChange={this.onChangeLogin}
             />
             <TextInput
                 id="TextInput-1"
                 label="Senha"
+                value={this.state.pass}
                 password
-            />
-        </Card>
+                onChange={this.onChangePass}
+            /> 
+        </Col>
         return card_login
     }
 }
